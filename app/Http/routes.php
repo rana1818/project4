@@ -29,23 +29,30 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware'=>'admin'], function(){
 
-	Route::get('/admin/courselist', ['as' => 'userlist', function(){ 
+	Route::get('/admin/courselist', ['as' => 'courselist', function(){ 
                return view('admin/courselist');
 
-	//	return "welcome administrator!!!!";
-	//	return view('admin/courselist'); 
 	}]);
-
       Route::get('/admin/course/{idedit}', ['as' => 'adminview', function($idedit){ 
  		return view('admin/adminCourseView', ['idedit' => $idedit]); 
 		//return "Hello";
  	}]); 
 
 
-	Route::get('/admin/newuser', ['as' => 'adminnew', function(){ 
-                 return "Hello"; 	
- //	return view('admin/adminnewuser'); 
+
+	Route::get('/admin/tee/{idedit}', ['as' => 'adminTeeView', function($idedit){ 
+ 		return view('admin/adminTeeView', ['idedit' => $idedit]); 
+
  	}]); 
+
+
+	Route::get('/admin/newcourse', ['as' => 'adminnewcourse', function(){ 
+               //  return "Hello"; 	
+               return view('admin/adminnewcourse');
+ 	}]); 
+
+
+       Route::post('/admin/newcourse', ['as' => 'adminnewcourse', 'uses'=>'AdminController@newCourse']);
 
 
 });
