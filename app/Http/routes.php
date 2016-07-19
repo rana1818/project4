@@ -33,10 +33,12 @@ Route::group(['middleware'=>'admin'], function(){
                return view('admin/courselist');
 
 	}]);
-      Route::get('/admin/course/{idedit}', ['as' => 'adminview', function($idedit){ 
+        Route::get('/admin/course/{idedit}', ['as' => 'adminview', function($idedit){ 
  		return view('admin/adminCourseView', ['idedit' => $idedit]); 
-		//return "Hello";
+		
  	}]); 
+
+
 
 
 
@@ -44,15 +46,41 @@ Route::group(['middleware'=>'admin'], function(){
  		return view('admin/adminTeeView', ['idedit' => $idedit]); 
 
  	}]); 
+        Route::get('/admin/newTee{idedit}', ['as' => 'adminnewTee', function($idedit){
+           
+		  return view('admin/adminNewTeeView', ['idedit' => $idedit]);
+		
+	 }]);
+	Route::post('/admin/newTee', ['as' => 'adminnewTeeColorView', 'uses'=>'AdminController@newTee']);
+
+
 
 
 	Route::get('/admin/newcourse', ['as' => 'adminnewcourse', function(){ 
-               //  return "Hello"; 	
+               
                return view('admin/adminnewcourse');
- 	}]); 
+ 	}]);
+       	Route::post('/admin/newcourse', ['as' => 'adminnewcourse', 'uses'=>'AdminController@newCourse']);
 
 
-       Route::post('/admin/newcourse', ['as' => 'adminnewcourse', 'uses'=>'AdminController@newCourse']);
+
+
+//.....................................................................................................
+	Route::get('/admin/courseEdit/{idedit}', ['as' => 'adminCourseEdit', function($idedit){
+ 	               
+		return view('admin/adminCourseEdit', ['idedit' => $idedit]);
+
+        }]);
+	Route::post('/admin/courseEdit/edit', ['uses'=>'AdminController@editCourse']);
+
+	 Route::get('/admin/courseparedit/{idedit}', ['as' => 'adminCourseParEdit', function($idedit){
+	       
+                 return view('admin/adminCourseParEdit', ['idedit' => $idedit]);
+
+        }]);
+	Route::post('/admin/courseparedit/edit', ['uses'=>'AdminController@editCoursePar']);
+//.......................................................................................................
+
 
 
 });

@@ -28,7 +28,7 @@
                          </div> 
  
  
-                        <!-- <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}"> 
+                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}"> 
                              <label for="email" class="col-md-4 control-label">E-Mail Address</label> 
  
  
@@ -42,7 +42,7 @@
                                      </span> 
                                  @endif 
                              </div> 
-                         </div> -->
+                         </div> 
  
  
                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
@@ -113,8 +113,7 @@
                          </div> 
  
  
- 
-                           
+                            
  					<div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}"> 
                              <label for="phone" class="col-md-4 control-label">Phone:</label> 
  
@@ -129,11 +128,40 @@
                                  @endif 
                              </div> 
                          </div> 
+
+
+
+
+				<div >
+					<table border= "1">
+						<tr> 
+ 						  <td>Par</td> 
+ 				  			@for ($val = 1; $val <= 18; $val++) 
+ 							<td><input type="text" size="2" name="{{'par' . $val}}" 
+ 							value="{{old('par' . $val)}}"></td> 
+ 							@endfor 
+ 							<td></td> 
+ 						</tr> 
+ 						    <tr> 
+ 							<td>Hdcp</td> 
+ 							@for ($i = 1; $i <= 18; $i++) 
+ 							<td><input type="text" size="2" name="{{'hdcp' . $i}}" 
+ 							value="{{old('hdcp' . $i)}}"></td> 
+ 							@endfor 
+ 							<td></td> 
+ 							</tr>                         
+ 					</table>
+				</div>
+
+		
+
+
+
  
  				<div class="form-group"> 
                              <div class="col-md-6 col-md-offset-4"> 
                                  <button type="submit" class="btn btn-primary"> 
-                                     <i class="fa fa-btn fa-user"></i> Register 
+                                     <i class="fa fa-btn fa-user"></i> Add 
                                  </button> 
                              </div> 
                        </div> 
